@@ -5,9 +5,9 @@ import importlib
 app = Flask(__name__)
 discord = DiscordInteractions(app)
 
-app.config["DISCORD_CLIENT_ID"] = "1114130290516959263"
-app.config["DISCORD_PUBLIC_KEY"] = "cfce12e1a56c319a72daa606eb9199ab13766870e2b96cec97ae370cf21dfa28"
-app.config["DISCORD_CLIENT_SECRET"] = "hW8hZtD4Wln0-uGrlS-1JsXajOgB7rVV"
+app.config["DISCORD_CLIENT_ID"] = ""
+app.config["DISCORD_PUBLIC_KEY"] = ""
+app.config["DISCORD_CLIENT_SECRET"] = ""
 
 discord.set_route("/interactions")
 
