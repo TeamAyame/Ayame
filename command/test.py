@@ -37,29 +37,3 @@ def balance(ctx: Context):
             )
         ]
     ))
-
-@bot.command()
-def work(ctx: Context):
-    t = get_timeout(ctx.author, "work")
-    member = ctx.author
-    currency = get_currency(ctx.guild)
-    user = users.find_one({'gid': ctx.guild.id})
-    work_stats = check_stats("work_stats")
-    if t[0]:
-        works = {
-            1: 'Вы поработали программистом и зарабатывали',
-            2: 'Вы поработали в SubWay и зарабатывали',
-            3: 'Вы поработали строителем и заработали',
-            4: 'Вы поработали парикмахером и заработали',
-            5: 'Вы поработали водителем такси и заработали',
-            6: 'Вы поработали сантехником и заработали'
-        }
-        work = random.randint(1, 6)
-        amount = random.randint(500, 1000)
-        if work <= 3:
-            amount = random.randint(200, 600)
-        users.update_one({'gid': member.guild.id, 'uid': member.id}, {'$set': {'balance': user['balance'] + amount}})
-        return Message(embed=Embed(description=f'{works[work]} {task(amount)} {currency}'))
-    else:
-        return Message(embed=Embed(
-            description=f"Вы сможете выйти на работу <t:{str(t[1].timestamp()).split('.')[0]}:R>"))
