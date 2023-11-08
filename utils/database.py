@@ -15,11 +15,7 @@ def get_guild(guild_id):
     if not guild_obj:
         guild_obj = {
             'gid': guild_id,
-            'currency': '🪙',
-            'premium': False,
-            "timeout_work": 2,
-            "timeout_crime": 3,
-            "timeout_collect": 2
+            'currency': '🪙'
         }
         settings.insert_one(guild_obj)
     return guild_obj
